@@ -1,0 +1,57 @@
+{% extends 'main_app/index.html' %}
+{% load static %}
+{% block page_title %}{{page_title}}{% endblock page_title %}
+
+{% block content %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- general form elements -->
+       
+                <!-- /.card -->
+<div class="card card-primary">
+    <div class="card-header"><h3 class="card-title">{{page_title}}</h3>
+    </div>
+   <div class="card-body table-responsive p-2">
+
+       <table class="table table-bordered text-nowrap">
+           <tr>
+               <th>ID</th>
+               <th>Subject</th>
+               <th>Internal Test 1</th>
+               <th>Internal Test 2</th>
+               <th>Assignment</th>
+               <th>Attendence</th>
+               <th>Semester End Exam</th>
+               <th>Total</th>
+               <th>Status</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{ result.subject }}</td>
+            <td>{{ result.internal_test_1 }}</td>
+            <td>{{ result.internal_test_2 }}</td>
+            <td>{{ result.assignment }}</td>
+            <td>{{ result.attendance }}</td>
+            <td>{{ result.semester }}</td>
+            <td>{{ result.result }}</td>
+            <td>
+                {% if result.result >= 40 %}
+                <span class="badge  badge-success">Pass</span>
+                {% else %}
+                <span class="badge badge-danger">Fail</span>
+                {% endif %}
+            </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Andhra Loyola College</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- Google Recaptcha     -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function myFunction(){
+            var pw=document.getElementById("password");
+            if(pw.type==="password"){
+                pw.type="text";
+            }else{
+                pw.type="password";
+            }
+        }
+    </script>
+</head>
+<style>
+        .btn1{
+            background-color: red;
+            color: black;
+            padding: 10px 30px;
+            font-weight: bold;
+            border: 2px solid red;
+        }
+        .btn1:hover{
+            background-color: red;
+            border: 2px solid black;
+        }
+        .btn{
+            background-color: rgb(119, 212, 246);
+            color: black;
+            padding: 10px 30px;
+            font-weight: bold;
+            border: 2px solid rgb(119, 212, 246);
+        }
+        .btn:hover{
+            background-color: aquamarine;
+            color: black;
+            border: 2px solid black;
+        }
+        .login{
+            display:none;
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%; 
+            overflow: auto;
+        }
+        .close{
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            top: 0;
+            left: 0;
+        }
+        .close:hover,
+        .close:focus{
+            color: red;
+            cursor: pointer;
+        }
+        .animate {
+        -webkit-animation: animatezoom 1s;
+        animation: animatezoom 1s
+        }
+        .login-page{
+            background-color: transparent;
+        }
+
+        @-webkit-keyframes animatezoom {
+        from {-webkit-transform: scale(0.5)} 
+        to {-webkit-transform: scale(1)}
+        }
+        
+        @keyframes animatezoom {
+        from {transform: scale(0.5)} 
+        to {transform: scale(1)}
+        }
+        .head{
+            background-color: black;
+        }
+        marquee h3{
+            color: white;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .image{
+            display: none;
+        }
+        @media screen and (max-width: 810px){
+            #carouselExampleIndicators{
+                display: none;
+            }
+            .image{
+                display: block;
+                margin: auto;
+            }
+        }
+    </style>
+
+
+<div class="head">
+	<marquee><h3>Welcome To Andhra Loyola College</h3></marquee>
+    
+</div>
+<button class="btn btn-primary my-1 mx-2" onclick="document.getElementById('login').style.display='block'">Login</button>
+{% if messages %}
+<div class="col-12">
+    {% for message in messages %}
+    {% if message.tags == 'error' %}
+    <div class="alert alert-danger text-center ">
+        {{message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+<img src="{% static 'dist/img/logotrans.png' %}" alt="" class="image" width="80%">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators"></ol>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+        {% comment %} <img class="d-block w-100" src="https://images.unsplash.com/20/cambridge.JPG?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1030&q=80" alt="First slide"> {% endcomment %}
+        <img src="{% static 'dist/img/logotrans.png' %}" class="d-block size-cover" alt="..." style="margin: auto;" width="320px">
+        </div>
+
+        <div class="carousel-item" style="text-align:center;">
+        {% comment %} <img class="d-block w-100" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Second slide"> {% endcomment %}
+        <p></p>
+        <img src="{% static 'dist/img/gate.jpg' %}" class="d-block w-100 h-100 size-cover " alt="...">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div id="login" class="login animate">
+    <div class="hold-transition login-page">
+        <div class="login-box">
+            <div class="card">
+                <div class="card-body login-card-body">
+                    <p class="login-box-msg"><a href=""><img src="{% static 'dist/img/logotrans.png' %}" alt="" width="10%"></a></p>
+                    <form action="doLogin/" method="post">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <input required type="email" name='email' class="form-control" placeholder="Email">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input required type="password" name='password' class="form-control" placeholder="Password" id="password">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-1" style="margin: auto;">
+                                <input type="checkbox" onclick="myFunction()">
+                                <label>Show Password</label>
+                            </div>
+                            <div class="mb-1" style="margin: auto;">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">Remember Me</label>
+                            </div>
+                                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                    <button onclick="document.getElementById('login').style.display='none'" class="btn1 btn-primary btn-block" >Cancel</button>
+                            <!-- /.col -->
+                        </div>
+                    </form>
+                    <br>
+                    <p class="mb-1" style="text-align: center;">
+                        <a href="{% url 'password_reset' %}">I forgot my password</a>
+                    </p>
+                </div>
+                <!-- /.login-card-body -->
+            </div>
+        </div>
+        <!-- /.login-box -->
+    
+        <!-- jQuery -->
+        <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+        <!-- Bootstrap 4 -->
+        <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <!-- AdminLTE App -->
+        <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+    
+    </div>
+    
+</div>
+</html>

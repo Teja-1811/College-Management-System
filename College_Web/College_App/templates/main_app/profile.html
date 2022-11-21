@@ -1,0 +1,35 @@
+{% extends "main_app/index.html" %}
+{% load static %}
+{% block page_title %}Profile{% endblock page_title %}
+{% block content %}
+<style>
+    .card-body{
+        background:linear-gradient(0deg, rgba(34,193,195,1) 19%, rgba(253,45,237,1) 71%);;
+    }
+    .card-body img{
+        height: 150px;
+        width: 150px;
+        border-radius: 100px;
+        border: 2px solid black;
+    }
+    .card-body p{
+        color: white;
+        line-height: 0.8;
+    }
+</style>
+<section class="login-page" style="margin-top: -95px;margin-bottom: -55px;">
+    <div class="login-box">
+        <div class="card">
+            <div class="card-body login-card-body" style="text-align: center;">
+                <img src="{{ request.user.profile_pic}}"><br><br>
+                <p><span style="color: black;"><b>Name : </b></span> {{user}}</p>
+                <p><span style="color: black;"><b>Unique ID : </b></span>{{user.id}}</p>
+                <p><span style="color: black;"><b>Email : </b></span>{{user.email}}</p>
+                <p><span style="color: black;"><b>Gender : </b></span>{{user.gender}}</p>
+                <p><span style="color: black;"><b>Address : </b></span>{{user.address}}</p>
+                <p><span style="color: black;"><b>DOB : </b></span>{{user.date_of_birth}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
